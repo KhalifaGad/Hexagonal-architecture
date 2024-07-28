@@ -17,7 +17,7 @@ export class OrmAlarmRepository implements AlarmRepository {
     const persistentModel = AlarmMapper.toPersistence(alarm);
     const alarmEntity = await this.alarmRepository.save({
       ...persistentModel,
-      id: undefined,
+      id: alarm.id ?? undefined,
     });
     return AlarmMapper.toDomain(alarmEntity);
   }
